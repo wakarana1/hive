@@ -1,74 +1,72 @@
 <!DOCTYPE html>
 <head>
-  <meta charset="utf-8" />
-  
-<!-- jQuery -->
-  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <meta charset="utf-8" />
 
-  <!-- Firebase -->
-  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-  <!-- CodeMirror and its JavaScript mode file -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/mode/javascript/javascript.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.css" />
-  <script src="lib/codemirror.js"></script>
-  <script src="addon/mode/loadmode.js"></script>
-  <script src="mode/meta.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 
-  <!-- Firepad -->
-  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.css" />
-  <script src="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.min.js"></script>
+    <!-- CodeMirror and its JavaScript mode file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/mode/javascript/javascript.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.css" />
+    <script src="lib/codemirror.js"></script>
+    <script src="addon/mode/loadmode.js"></script>
+    <script src="mode/meta.js"></script>
 
-<!-- Bootstrap -->
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Firepad -->
+    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.css" />
+    <script src="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.min.js"></script>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-  <style>
-    html {
-      height: 100%; 
-    }
-    body {
-      margin: 0; 
-      height: 100%; 
-      position: relative; 
-    }
-    #firepad-container {
-      width: 50%;
-      float: left;
-      height: 100%;
-    }
-    a.powered-by-firepad {
-      display: none;
-    }
-    body {
-    	background: red;
-    }
-    #file-name {
-    	float: right;
-    	color: white;
-    }
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-  </style>
+    <style>
+        html {
+            height: 100%; 
+        }
+        body {
+            margin: 0; 
+            height: 100%; 
+            position: relative; 
+        }
+        #firepad-container {
+            width: 50%;
+            float: left;
+            height: 100%;
+        }
+        a.powered-by-firepad {
+            display: none;
+        }
+        body {
+            background: red;
+        }
+        #file-name {
+            float: right;
+            color: white;
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-<button class="ui button">
-  Follow
-</button>
+    <button class="ui button">Follow</button>
 
-  <div id="firepad-container"></div>
+    <div id="firepad-container"></div>
 
-  <script src="javascripts/editor.js"></script>
-  <script src="javascripts/chat.js"></script>
+    <script src="javascripts/editor.js"></script>
+    <script src="javascripts/chat.js"></script>
 
 </body>
 </html>
