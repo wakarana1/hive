@@ -1,8 +1,10 @@
-<!doctype html>
-<!-- See http://www.firepad.io/docs/ for detailed embedding docs. -->
-<html>
+<!DOCTYPE html>
 <head>
   <meta charset="utf-8" />
+  
+<!-- jQuery -->
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
   <!-- Firebase -->
   <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 
@@ -10,64 +12,63 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/mode/javascript/javascript.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.css" />
+  <script src="lib/codemirror.js"></script>
+  <script src="addon/mode/loadmode.js"></script>
+  <script src="mode/meta.js"></script>
 
   <!-- Firepad -->
-  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.css" />
-  <script src="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.css" />
+  <script src="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.min.js"></script>
+
+<!-- Bootstrap -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   <style>
-    html { height: 100%; }
-    body { margin: 0; height: 100%; position: relative; }
-    /* Height / width / positioning can be customized for your use case.
-       For demo purposes, we make firepad fill the entire browser. */
+    html {
+      height: 100%; 
+    }
+    body {
+      margin: 0; 
+      height: 100%; 
+      position: relative; 
+    }
     #firepad-container {
       width: 50%;
+      float: left;
       height: 100%;
     }
     a.powered-by-firepad {
-	    display: none;
-		}
+      display: none;
+    }
+    body {
+    	background: red;
+    }
+    #file-name {
+    	float: right;
+    	color: white;
+    }
+
   </style>
+
 </head>
 
 <body>
+
+<button class="ui button">
+  Follow
+</button>
+
   <div id="firepad-container"></div>
 
-  <script>
-    function init() {
-      //// Initialize Firebase.
-      var firepadRef = getExampleRef();
-      // TODO: Replace above line with:
-      // var firepadRef = new Firebase('<YOUR FIREBASE URL>');
+  <script src="javascripts/editor.js"></script>
+  <script src="javascripts/chat.js"></script>
 
-      //// Create CodeMirror (with line numbers and the JavaScript mode).
-      var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
-        lineNumbers: true,
-        mode: 'javascript'
-      });
-
-      //// Create Firepad.
-      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-        defaultText: 'Welcome to Hive'
-      });
-    }
-
-    // Helper to get hash from end of URL or generate a random one.
-    function getExampleRef() {
-      var ref = new Firebase('https://firepad.firebaseio-demo.com');
-      var hash = window.location.hash.replace(/#/g, '');
-      if (hash) {
-        ref = ref.child(hash);
-      } else {
-        ref = ref.push(); // generate unique location.
-        window.location = window.location + '#' + ref.key(); // add it as a hash to the URL.
-      }
-      if (typeof console !== 'undefined')
-        console.log('Firebase data: ', ref.toString());
-      return ref;
-    }
-
-    init();
-  </script>
 </body>
 </html>
