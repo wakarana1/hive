@@ -8,12 +8,47 @@
     <!-- Firebase -->
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 
-    <!-- CodeMirror and its JavaScript mode file -->
+    <!-- CodeMirror  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/mode/javascript/javascript.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.css">
+    <link rel="stylesheet" href="theme/3024-day.css">
+    <link rel="stylesheet" href="theme/3024-night.css">
+    <link rel="stylesheet" href="theme/ambiance.css">
+    <link rel="stylesheet" href="theme/base16-dark.css">
+    <link rel="stylesheet" href="theme/base16-light.css">
+    <link rel="stylesheet" href="theme/blackboard.css">
+    <link rel="stylesheet" href="theme/cobalt.css">
+    <link rel="stylesheet" href="theme/colorforth.css">
+    <link rel="stylesheet" href="theme/eclipse.css">
+    <link rel="stylesheet" href="theme/elegant.css">
+    <link rel="stylesheet" href="theme/erlang-dark.css">
+    <link rel="stylesheet" href="theme/lesser-dark.css">
+    <link rel="stylesheet" href="theme/liquibyte.css">
+    <link rel="stylesheet" href="theme/mbo.css">
+    <link rel="stylesheet" href="theme/mdn-like.css">
+    <link rel="stylesheet" href="theme/midnight.css">
+    <link rel="stylesheet" href="theme/monokai.css">
+    <link rel="stylesheet" href="theme/neat.css">
+    <link rel="stylesheet" href="theme/neo.css">
+    <link rel="stylesheet" href="theme/night.css">
+    <link rel="stylesheet" href="theme/paraiso-dark.css">
+    <link rel="stylesheet" href="theme/paraiso-light.css">
+    <link rel="stylesheet" href="theme/pastel-on-dark.css">
+    <link rel="stylesheet" href="theme/rubyblue.css">
+    <link rel="stylesheet" href="theme/solarized.css">
+    <link rel="stylesheet" href="theme/the-matrix.css">
+    <link rel="stylesheet" href="theme/tomorrow-night-bright.css">
+    <link rel="stylesheet" href="theme/tomorrow-night-eighties.css">
+    <link rel="stylesheet" href="theme/ttcn.css">
+    <link rel="stylesheet" href="theme/twilight.css">
+    <link rel="stylesheet" href="theme/vibrant-ink.css">
+    <link rel="stylesheet" href="theme/xq-dark.css">
+    <link rel="stylesheet" href="theme/xq-light.css">
+    <link rel="stylesheet" href="theme/zenburn.css">
     <script src="lib/codemirror.js"></script>
     <script src="addon/mode/loadmode.js"></script>
+    <script src="addon/edit/matchbrackets.js"></script>
     <script src="mode/meta.js"></script>
 
     <!-- Firepad -->
@@ -29,43 +64,85 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <style>
-        html {
-            height: 100%; 
-        }
-        body {
-            margin: 0; 
-            height: 100%; 
-            position: relative; 
-        }
-        #firepad-container {
-            width: 50%;
-            float: left;
-            height: 100%;
-        }
-        a.powered-by-firepad {
-            display: none;
-        }
-        body {
-            background: red;
-        }
-        #file-name {
-            float: right;
-            color: white;
-        }
-
-    </style>
+    <link rel="stylesheet" href="stylesheets/style.css">
 
 </head>
 
 <body>
 
-    <p>File name<input type="text" value="foo.js" id="mode"> <button type=button onclick="change()">change extension</button></p>
-    <p style="color: gray">Current mode: <span id="modeinfo">text/plain</span></p>
-    
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img alt="Brand" src="images/hive_icon copy.png">
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">New snippet</a></li>
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Themes <span class="caret"></span></a>
+                <ul class="dropdown-menu" id="select">
+                    <li>default</li>
+                    <li>3024-day</li>
+                    <li>3024-night</li>
+                    <li>ambiance</li>
+                    <li>base16-dark</li>
+                    <li>base16-light</li>
+                    <li>blackboard</li>
+                    <li>cobalt</li>
+                    <li>colorforth</li>
+                    <li>eclipse</li>
+                    <li>elegant</li>
+                    <li>erlang-dark</li>
+                    <li>lesser-dark</li>
+                    <li>liquibyte</li>
+                    <li>mbo</li>
+                    <li>mdn-like</li>
+                    <li>midnight</li>
+                    <li>monokai</li>
+                    <li>neat</li>
+                    <li>neo</li>
+                    <li>night</li>
+                    <li>paraiso-dark</li>
+                    <li>paraiso-light</li>
+                    <li>pastel-on-dark</li>
+                    <li>rubyblue</li>
+                    <li>solarized dark</li>
+                    <li>solarized light</li>
+                    <li>the-matrix</li>
+                    <li>tomorrow-night-bright</li>
+                    <li>tomorrow-night-eighties</li>
+                    <li>ttcn</li>
+                    <li>twilight</li>
+                    <li>vibrant-ink</li>
+                    <li>xq-dark</li>
+                    <li>xq-light</li>
+                    <li>zenburn</li>
+                    <li>Action</li>
+                </ul>
+                </li>
+            </ul>
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <p>File name: &nbsp;&nbsp;<input type="text" value="untitled.txt" id="mode"> <button class="btn btn-info btn-sm" type=button onclick="change()">change extension</button></p>
+            </div>
+        </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+    <div class="col-md-6"></div>
+    <p class="col-md-6 syntax">Current syntax: <span id="modeinfo">text/plain</span></p>
     <div id="firepad-container"></div>
-    
+
     <script src="javascripts/editor.js"></script>
     <script src="javascripts/chat.js"></script>
 
