@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8" />
+    <title>HIVE Code Editor</title>
 
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -12,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/mode/javascript/javascript.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.css">
+    <!-- Themes -->
     <link rel="stylesheet" href="theme/3024-day.css">
     <link rel="stylesheet" href="theme/3024-night.css">
     <link rel="stylesheet" href="theme/ambiance.css">
@@ -47,9 +49,14 @@
     <link rel="stylesheet" href="theme/xq-light.css">
     <link rel="stylesheet" href="theme/zenburn.css">
     <script src="lib/codemirror.js"></script>
+    <!-- Lazy mode syntax selector -->
     <script src="addon/mode/loadmode.js"></script>
-    <script src="addon/edit/matchbrackets.js"></script>
     <script src="mode/meta.js"></script>
+    <script src="addon/edit/matchbrackets.js"></script>
+    <!-- Auto bracket closer -->
+    <script src="../addon/edit/closebrackets.js"></script>
+    <!-- Matches words -->
+    <script src="addon/search/match-highlighter.js"></script>
 
     <!-- Firepad -->
     <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.css" />
@@ -139,10 +146,10 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-    <div class="col-md-6"></div>
-    <p class="col-md-6 syntax">Current syntax: <span id="modeinfo">text/plain</span></p>
+    <p class="text-right syntax">Current syntax: <span id="modeinfo">text/plain</span></p>
+    <!-- Code editor -->
     <div id="firepad-container"></div>
-
+    <!-- Firepad and Firechat -->
     <script src="javascripts/editor.js"></script>
     <script src="javascripts/chat.js"></script>
 

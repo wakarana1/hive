@@ -5,13 +5,12 @@ html {
     height: 100%; 
 }
 body {
-    padding: 10px 0 0 20px;
-    margin: 0; 
     height: 100%; 
-    position: relative; 
+    background: #696969;
+    /*position: relative; */
 }
 #firepad-container {
-    width: 60%;
+    width: 70%;
     float: right;
     height: 100%;
 }
@@ -28,27 +27,27 @@ body {
 a.powered-by-firepad {
     display: none;
 }
-body {
-    background: white;
-}
 #file-name {
     float: right;
     color: white;
 }
 .syntax {
     font-size: 1.25em;
+    padding-right: 5px;
+    color: white;
 }
 #select li:hover {
     background-color: gray;
 }
 #select li {
-    padding-left: 5px;
+    padding: 10px 5px;
     border-bottom: 1px solid #bbb;
     cursor: pointer;
 }
 .navbar {
   background: #6699ff;
   border-color: #a2bcf2;
+  margin-bottom: 10px;
 }
 .navbar-header {
   padding-top: 2px;

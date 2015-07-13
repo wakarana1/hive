@@ -8,10 +8,10 @@ function init() {
     // create CodeMirror in JavaScript mode
      codeMirror = CodeMirror(document.getElementById('firepad-container'), {
         lineNumbers: true,
-        matchBrackets: true
+        matchBrackets: true,
+        highlightSelectionMatches: {showToken: /\w/},
+        lineWrapping: true
     });
-
-    // $('pre').attr('data-lang', 'html');
 
     var hash = window.location.hash.replace(/#/g, "");
    
@@ -22,10 +22,14 @@ function init() {
         window.location = window.location + '#' + firepadRef.key(); // add it as a hash to the URL.
     }
 
-    firepadRef.child('file').on('value', function (snapshot){
+    // Save history
+    firepadRef.child(hash).on('value', function (snapshot){
         $('#mode').html(snapshot.val().name);
     });
 
+    // firepadRef.child('mode').on('value', function(snapshot) {
+    //     $('')
+    // };)
 
     // creates firepad
     var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
@@ -70,7 +74,7 @@ function change() {
     }
 
     // // code for changing name
-    // firepadRef.child('mode').set({name: 'untitled.txt', type: val });
+    firepadRef.child('mode').set({name: 'untitled.txt', type: val() });
 }
 
 init();
