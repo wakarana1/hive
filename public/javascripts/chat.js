@@ -39,7 +39,7 @@ messageField.keypress(function (e) {
     if (e.keyCode == 13) {
         // Field Values
         var message = messageField.val();
-
+        e.preventDefault();
         // Save data to firebase and empty field
         messagesRef.push({name:username, text:message});
         messageField.val('');
