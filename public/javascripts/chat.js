@@ -57,7 +57,7 @@ messagesRef.limitToLast(10).on('child_added', function (snapshot) {
     var messageElement = $("<li>");
     var nameElement = $("<strong></strong>");
     nameElement.text(username);
-    messageElement.text("  " + message).prepend(nameElement);
+    messageElement.text(":  " + message).prepend(nameElement);
 
     // Add message
     messageList.append(messageElement);
