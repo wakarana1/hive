@@ -1,16 +1,26 @@
 var codeMirror;
 var modeInput;
 var firepadRef;
-function init() {
+
+// setting syntax mode
+CodeMirror.modeURL = '../mode/%N/%N.js';
+modeInput = document.getElementById('mode');
+
+var currentTheme = 'ambiance';
+
+function init(authData) {
     // initialize firebase
-    var firepadRef = new Firebase('https://h-i-v-e.firebaseio.com');
+
+    firepadRef = new Firebase('https://h-i-v-e.firebaseio.com');
+
 
     // create CodeMirror in JavaScript mode
      codeMirror = CodeMirror(document.getElementById('firepad-container'), {
         lineNumbers: true,
         matchBrackets: true,
         highlightSelectionMatches: {showToken: /\w/},
-        lineWrapping: true
+        lineWrapping: true,
+        theme: 'ambiance'
     });
 
     var hash = window.location.hash.replace(/#/g, "");
@@ -19,17 +29,16 @@ function init() {
         firepadRef = firepadRef.child(hash);
     } else {
         firepadRef = firepadRef.push(); // generate unique location.
+        firepadRef.child('file').set("untitled.txt");
         window.location = window.location + '#' + firepadRef.key(); // add it as a hash to the URL.
     }
 
-    // Save history
-    firepadRef.child(hash).on('value', function (snapshot){
-        $('#mode').html(snapshot.val().name);
+    firepadRef.child('file').on('value', function (snapshot) {
+        // if (snapshot.val() != modeInput.value) {
+            modeInput.value = snapshot.val();
+        // }
+        change();
     });
-
-    // firepadRef.child('mode').on('value', function(snapshot) {
-    //     $('')
-    // };)
 
     // creates firepad
     var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
@@ -38,26 +47,27 @@ function init() {
 
     if (typeof console !== 'undefined'){
         console.log('Firebase data: ', firepadRef.toString());
-        return firepadRef;
     }
+
+    $('#mode').on('change blur', function() {
+        firepadRef.child('file').set(modeInput.value);
+    });
+
 }
 
-CodeMirror.modeURL = '../mode/%N/%N.js';
-modeInput = document.getElementById('mode');
-CodeMirror.on(modeInput, 'keypress', function(e) {
-    if (e.keyCode == 13) change();
-});
+
 
 function change() {
+    var info;
     var val = modeInput.value, m, mode, spec;
     if (m = /.+\.([^.]+)$/.exec(val)) {
-        var info = CodeMirror.findModeByExtension(m[1]);
+        info = CodeMirror.findModeByExtension(m[1]);
         if (info) {
             mode = info.mode;
             spec = info.mime;
         }
     } else if (/\//.test(val)) {
-        var info = CodeMirror.findModeByMIME(val);
+        info = CodeMirror.findModeByMIME(val);
         if (info) {
           mode = info.mode;
           spec = val;
@@ -69,29 +79,35 @@ function change() {
         codeMirror.setOption('mode', spec);
         CodeMirror.autoLoadMode(codeMirror, mode);
         document.getElementById('modeinfo').textContent = spec;
+        codeMirror.setOption('theme', currentTheme);
     } else {
-        alert('Could not find a mode corresponding to ' + val);
+        if (val) alert('Could not find a mode corresponding to ' + val);
     }
 
     // // code for changing name
-    firepadRef.child('mode').set({name: 'untitled.txt', type: val() });
+    // firepadRef.child('mode').set({ name: 'untitled.txt', type: val });
+
+    // firepadRef.child('mode').on('value', function(snapshot) {
+    //     $('')
+    // };)
+
+
 }
 
 init();
 
 // Theme select
 var input = document.getElementById('select');
-var currentTheme = 'default';
 function chosenTheme () {
     codeMirror.setOption('theme', currentTheme);
 }
 
-CodeMirror.on(window, 'hashchange', function() {
-    currentTheme = location.hash.slice(1);
-    if (currentTheme) {
-        chosenTheme();
-    }
-});
+// CodeMirror.on(window, 'hashchange', function() {
+//     currentTheme = location.hash.slice(1);
+//     if (currentTheme) {
+//         chosenTheme();
+//     }
+// });
 
 $('#select li').click(function() {
     currentTheme = this.textContent;
@@ -99,15 +115,27 @@ $('#select li').click(function() {
 });
 
 
+// OAuth
+// firepadRef.onAuth(function(authData) {
+//   // Once authenticated, instantiate Firechat with our user id and user name
+//     if (authData) {
+//         var chat = new FirechatUI(firepadRef, document.getElementById('firechat-wrapper'));
+//         chat.setUser(authData.uid, authData[authData.provider].displayName);
+//     } else {
+        
+//         function login(provider) {
+//             firepadRef.authWithOAuthPopup('github', function(error, authData) {
+//                 if (error) {
+//                     console.log(error);
+//                 }
+//             });
+//         }
+//     }
+// });
 
-// firepadRef.authWithOAuthRedirect('github', function(error) {
-//   if (error) {
-//     console.log('Login Failed!', error);
-//   } else {
-//     // We'll never get here, as the page will redirect on success.
+// firepadRef.onAuth(function(authData) {
+//   // Once authenticated, instantiate Firechat with our user id and user name
+//   if (authData) {
+//     init(authData);
 //   }
-// },
-// {
-//   remember: 'sessionOnly',
-//   scope: 'user,gist'
 // });

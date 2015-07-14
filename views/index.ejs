@@ -62,6 +62,10 @@
     <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.css" />
     <script src="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.min.js"></script>
 
+    <!-- Firechat -->
+    <link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css' />
+    <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
+
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -89,13 +93,12 @@
             </button>
             <img alt="Brand" src="images/hive_icon copy.png">
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="#">New snippet</a></li>
                 <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Themes <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="theme">Themes <span class="caret"></span></a>
                 <ul class="dropdown-menu" id="select">
                     <li>default</li>
                     <li>3024-day</li>
@@ -139,19 +142,58 @@
             </ul>
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
-                <p>File name: &nbsp;&nbsp;<input type="text" value="untitled.txt" id="mode"> <button class="btn btn-info btn-sm" type=button onclick="change()">change extension</button></p>
+                <p>File name: &nbsp;&nbsp;<input type="text" id="mode"> <button class="btn btn-info btn-sm" type=button onclick="change()">change extension</button></p>
             </div>
         </form>
+        <ul class="nav navbar-nav navbar-right">
+        
+            <li><a onclick="logout()">Logout</a></li>
+        </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
-    <p class="text-right syntax">Current syntax: <span id="modeinfo">text/plain</span></p>
-    <!-- Code editor -->
-    <div id="firepad-container"></div>
-    <!-- Firepad and Firechat -->
-    <script src="javascripts/editor.js"></script>
-    <script src="javascripts/chat.js"></script>
+<p class="text-right syntax">Current syntax: <span id="modeinfo">text/plain</span></p>
+
+<!-- Chatbox -->
+<div id="chat">
+    <header>Questions/Comments</header>
+
+    <div class='chat-toolbar'>
+        <label id="username"></label>
+    </div>
+
+    <ul id='messages' class="chat-messages"></ul>
+
+    <footer>
+        <input type="text" id='messageInput' placeholder='Ask your question'>
+    </footer>
+</div>
+
+<!-- Code editor -->
+<div id="firepad-container"></div>
+<!-- Firepad and Firechat -->
+<script src="javascripts/editor.js"></script>
+<script src="javascripts/chat.js"></script>
+<script src="javascripts/modal.js"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+            </div>
+            <div class="modal-body text-center">
+                <h4>Please Log in through Github to continue</h4>
+                <button type='button' class="btn btn-warning" onclick='login();'>Login with Github</button>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
