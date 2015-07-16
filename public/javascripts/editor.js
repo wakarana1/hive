@@ -53,7 +53,7 @@ function init(authData) {
 
     // creates firepad
     var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-        defaultText: 'Welcome to Hive'
+        defaultText: "Welcome to Hive. write your code below! \n \nChange the file extension, and theme above! \n \n def say_hello \n    puts 'Hello, World' \n end \n \n function hello(){ \n    console.log('Hello World!') \n }" 
     });
 
     if (typeof console !== 'undefined'){
@@ -65,8 +65,6 @@ function init(authData) {
     });
 
 }
-
-
 
 function change() {
     var info;
@@ -94,15 +92,6 @@ function change() {
     } else {
         if (val) alert('Could not find a mode corresponding to ' + val);
     }
-
-    // // code for changing name
-    // firepadRef.child('mode').set({ name: 'untitled.txt', type: val });
-
-    // firepadRef.child('mode').on('value', function(snapshot) {
-    //     $('')
-    // };)
-
-
 }
 
 init();
@@ -113,40 +102,7 @@ function chosenTheme () {
     codeMirror.setOption('theme', currentTheme);
 }
 
-// CodeMirror.on(window, 'hashchange', function() {
-//     currentTheme = location.hash.slice(1);
-//     if (currentTheme) {
-//         chosenTheme();
-//     }
-// });
-
 $('#select li').click(function() {
     currentTheme = this.textContent;
     chosenTheme();
 });
-
-
-// OAuth
-// firepadRef.onAuth(function(authData) {
-//   // Once authenticated, instantiate Firechat with our user id and user name
-//     if (authData) {
-//         var chat = new FirechatUI(firepadRef, document.getElementById('firechat-wrapper'));
-//         chat.setUser(authData.uid, authData[authData.provider].displayName);
-//     } else {
-        
-//         function login(provider) {
-//             firepadRef.authWithOAuthPopup('github', function(error, authData) {
-//                 if (error) {
-//                     console.log(error);
-//                 }
-//             });
-//         }
-//     }
-// });
-
-// firepadRef.onAuth(function(authData) {
-//   // Once authenticated, instantiate Firechat with our user id and user name
-//   if (authData) {
-//     init(authData);
-//   }
-// });

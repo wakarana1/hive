@@ -78,42 +78,5 @@ function render(authorized) {
     if(! authorized) {
         $('#myModal').modal('show');
         console.log('Test');
-    }
-        
+    }       
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// messagesRef.onAuth(function(authData) {
-//   // Once authenticated, instantiate Firechat with our user id and user name
-//   if (authData) {
-//     initChat(authData);
-//   }
-// });
-
-// function initChat(authData) {
-//   var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
-//   chat.setUser(authData.uid, authData[authData.provider].displayName);
-// nameField = chat.setUser;
-// }
