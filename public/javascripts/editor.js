@@ -56,10 +56,6 @@ function init(authData) {
         defaultText: "Welcome to Hive. write your code below! \n \nChange the file extension, and theme above! \n \n def say_hello \n    puts 'Hello, World' \n end \n \n function hello(){ \n    console.log('Hello World!') \n }" 
     });
 
-    if (typeof console !== 'undefined'){
-        console.log('Firebase data: ', firepadRef.toString());
-    }
-
     $('#mode').on('change blur', function() {
         firepadRef.child('file').set(modeInput.value);
     });
